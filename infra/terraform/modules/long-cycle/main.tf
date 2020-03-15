@@ -31,6 +31,10 @@ resource "aws_athena_database" "this" {
   name   = replace(var.service_name_with_env, "-", "_")
   bucket = var.log_bucket_name
 }
+
+################################################################################
+# Athena Working Group
+################################################################################
 resource "aws_athena_workgroup" "this" {
   name = var.service_name_with_env
   configuration {
@@ -40,4 +44,22 @@ resource "aws_athena_workgroup" "this" {
       output_location = "s3://${var.log_bucket_name}/athena-result/"
     }
   }
+}
+
+################################################################################
+# Athena のクエリ
+################################################################################
+data "template_file" "create_table_sql" {
+  template = "${file("${path.module}/sql/create-table.sql.tpl")}"
+  vars = {
+    athena_db_name    = aws_athena_database.this.id
+    athena_table_name = aws_athena_database.this.id
+    s3_bucket_name    = var.log_bucket_name
+  }
+}
+resource "aws_athena_named_query" "create_table" {
+  name      = "Setup athena table for ${var.service_name_with_env}"
+  workgroup = aws_athena_workgroup.this.id
+  database  = aws_athena_database.this.id
+  query     = data.template_file.create_table_sql.rendered
 }

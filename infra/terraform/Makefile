@@ -23,13 +23,13 @@ apply-all:
 	make apply-production
 .PHONY: apply-development
 apply-development:
-#	cd workload/development/archivable && terraform apply -var-file ../terraform.tfvars
+	cd workload/development/archivable && terraform apply -var-file ../terraform.tfvars
 	cd workload/development/long-cycle && terraform apply -var-file ../terraform.tfvars
 .PHONY: apply-staging
 apply-staging:
-#	cd workload/staging/archivable && terraform apply -var-file ../terraform.tfvars
+	cd workload/staging/archivable && terraform apply -var-file ../terraform.tfvars
 	cd workload/staging/long-cycle && terraform apply -var-file ../terraform.tfvars
 .PHONY: apply-production
 apply-production:
-#	cd workload/production/archivable && terraform apply -var-file ../terraform.tfvars
+	cd workload/production/archivable && terraform apply -var-file ../terraform.tfvars
 	cd workload/production/long-cycle && terraform apply -var-file ../terraform.tfvars
