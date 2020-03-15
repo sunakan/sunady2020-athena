@@ -27,6 +27,7 @@ fluentd: sample-network
 		--env FLUENTD_S3_BUCKET=sunacket \
 		--env FLUENTD_S3_ACCESS_KEY=dummydummy \
 		--env FLUENTD_S3_SECRET_KEY=dummydummy \
+		--env FLUENTD_S3_FORCE_PATH_STYLE=true \
 		my-fluentd:latest
 
 .PHONY: fluent-cat
