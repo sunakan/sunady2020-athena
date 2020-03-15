@@ -1,0 +1,29 @@
+== インフラ部分
+
+.aws-confを設定(aws configure)
+----
+$ make bash
+# コンテナ内にて
+$ aws configure
+# ホスト側
+$ vim aws-conf/credentials
+----
+
+.aws-conf/credentials
+----
+[default]
+aws_access_key_id = 00000000000000000000
+aws_secret_access_key = ZZZZZZZZZZZZZZZZZZZ
+
+[development]
+role_arn = arn:aws:iam::111111111111:role/a
+source_profile = default
+
+[staging]
+role_arn = arn:aws:iam::222222222222:role/b
+source_profile = default
+
+[production]
+role_arn = arn:aws:iam::333333333333:role/c
+source_profile = default
+----
