@@ -1,0 +1,14 @@
+---
+
+- name: 開発でよく使うパッケージを入れる
+  become: yes
+  apt:
+    name:
+      - tree
+      - git
+      - tig
+      - vim
+      - make
+      - tmux
+    update_cache: yes
+    cache_valid_time: 3600
