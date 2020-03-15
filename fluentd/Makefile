@@ -23,11 +23,7 @@ fluentd: sample-network
 		--hostname fluentd \
 		--net ${DOCKER_NETWORK_NAME} \
 		--mount type=bind,source=${PWD}/fluent.conf,target=/fluentd/etc/fluent.conf \
-		--env FLUENTD_S3_ENDPOINT=http://minio:9000/ \
-		--env FLUENTD_S3_BUCKET=sunacket \
-		--env FLUENTD_S3_ACCESS_KEY=dummydummy \
-		--env FLUENTD_S3_SECRET_KEY=dummydummy \
-		--env FLUENTD_S3_FORCE_PATH_STYLE=true \
+		--env-file ${PWD}/fluentd-env \
 		my-fluentd:latest
 
 .PHONY: fluent-cat
