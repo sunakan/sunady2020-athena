@@ -23,3 +23,11 @@ resource "aws_iam_user_policy" "attach" {
   user   = aws_iam_user.logging_user.name
   policy = data.aws_iam_policy_document.log_bucket_policy.json
 }
+
+################################################################################
+# Athena DB
+################################################################################
+resource "aws_athena_database" "this" {
+  name   = replace(var.service_name_with_env, "-", "_")
+  bucket = var.log_bucket_name
+}

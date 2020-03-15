@@ -13,3 +13,8 @@ variable "log_bucket_arn" {
   description = "[required] Log用バケットのARN"
   type        = string
 }
+
+variable "log_bucket_name" {
+  description = "[required] Log用バケットの名前"
+  type        = string
+}
