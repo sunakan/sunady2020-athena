@@ -3,3 +3,26 @@
 == Minio（s3 clone）について
 
 include::./minio/README.adoc[]
+
+== localでfluentd -> minio
+
+.minio用のシェル1つ
+----
+$ cd minio
+$ make minio
+$ make watch
+----
+
+.fluentd用のシェル2つ
+----
+$ make fluentd
+別シェル
+$ make fluent-cat
+好きなタイミングで Ctrl + c で終了
+$ docker stop fluentd
+----
+
+.片付け
+----
+$ make clean
+----
