@@ -13,13 +13,16 @@ sample-network:
 .PHONY: minio
 minio: minio-volume sample-network
 	docker run \
+		-d \
 		--rm \
 		--tty \
+		--user `id -u`:`id -g` \
+		--name minio \
+		--hostname minio \
 		--mount type=bind,source=${PWD}/${MINIO_VOLUME_NAME},target=/export \
-		--mount type=bind,source=${PWD}/minio-keys,target=/minio-keys \
 		--net ${DOCKER_NETWORK_NAME} \
-		--env MINIO_ACCESS_KEY=/minio-keys/access-key \
-		--env MINIO_SECRET_KEY=/minio-keys/secret-key \
+		--env MINIO_ACCESS_KEY=dummydummy \
+		--env MINIO_SECRET_KEY=dummydummy \
 		minio/minio \
 		server /export
 
