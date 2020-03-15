@@ -1,0 +1,17 @@
+== minio(s3のクローン)
+
+.実行方法
+----
+$ make minio
+----
+
+.片付け
+----
+$ make clean
+----
+
+* ブラウザでlocalhost:9000で確認可能
+* もしVagrantでやってたら、VagrantIP:9000で確認可能
+* ブラウザアクセス時
+** access_keyはMakefileにあるMINIO_ACCESS_KEY
+** secret_keyはMakefileにあるMINIO_SECRET_KEY

@@ -1,0 +1,5 @@
+= Athenaを試したい
+
+== Minio（s3 clone）について
+
+include::./minio/README.adoc[]
