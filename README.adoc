@@ -26,3 +26,31 @@ $ docker stop fluentd
 ----
 $ make clean
 ----
+
+== fluentd -> AWS s3
+
+.development環境で実行確認
+----
+$ cd infra
+$ make bash
+# コンテナ内で
+$ make init-development
+$ make apply-development
+するとS3バケットとIAM Userができる
+アクセスキーとシークレットキーを発行（マネジメントコンソールにアクセス必要）
+ホスト側
+$ vim fluentd/fluentd-env
+適宜書き換え、force_path_styleをfalseにする
+$ vim fluentd/fluent.conf
+s3_endpointをコメントアウト
+----
+
+.localと同じ感じで実行可能
+----
+$ make fluentd
+別シェル
+$ make fluent-cat
+好きなタイミングで Ctrl + c で終了
+$ docker stop fluentd
+S3バケットの中身を確認（マネジメントコンソールにアクセス必要）
+----
