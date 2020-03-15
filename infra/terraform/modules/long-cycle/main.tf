@@ -31,3 +31,13 @@ resource "aws_athena_database" "this" {
   name   = replace(var.service_name_with_env, "-", "_")
   bucket = var.log_bucket_name
 }
+resource "aws_athena_workgroup" "this" {
+  name = var.service_name_with_env
+  configuration {
+    enforce_workgroup_configuration    = true
+    publish_cloudwatch_metrics_enabled = true
+    result_configuration {
+      output_location = "s3://${var.log_bucket_name}/athena-result/"
+    }
+  }
+}
