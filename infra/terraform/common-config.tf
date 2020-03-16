@@ -45,4 +45,5 @@ locals {
     environment = local.env_full
   }
   athena_result_bucket_name = "${local.service_name_with_env}-for-athena"
+  athena_workgroup_name     = local.service_name_with_env
 }
