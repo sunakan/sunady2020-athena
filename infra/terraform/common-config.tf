@@ -40,6 +40,7 @@ locals {
     "production", "prd",
   )[local.env_full]
   service_name_with_env = "suna-athena-sample-${local.env_short}"
+  log_bucket_name       = "suna-athena-sample-${local.env_short}"
   common_tags = {
     github      = "sunakan/sunady2020-athena"
     environment = local.env_full
