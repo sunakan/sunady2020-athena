@@ -39,8 +39,9 @@ locals {
     "staging", "stg",
     "production", "prd",
   )[local.env_full]
-  service_name_with_env = "athena-sample-${local.env_short}"
+  service_name_with_env = "suna-athena-sample-${local.env_short}"
   common_tags = {
-    github-project = "sunakan/sunady2020-athena"
+    github      = "sunakan/sunady2020-athena"
+    environment = local.env_full
   }
 }

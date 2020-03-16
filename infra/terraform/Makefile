@@ -5,6 +5,7 @@ init-all:
 	make init-production
 .PHONY: init-development
 init-development:
+	cd workload/development/0-dummy-log-bucket && terraform init # -upgrade
 .PHONY: init-staging
 init-staging:
 .PHONY: init-production
@@ -17,6 +18,7 @@ apply-all:
 	make apply-production
 .PHONY: apply-development
 apply-development:
+	cd workload/development/0-dummy-log-bucket && terraform apply
 .PHONY: apply-staging
 apply-staging:
 .PHONY: apply-production
