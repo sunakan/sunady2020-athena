@@ -33,3 +33,17 @@ apply-development:
 apply-staging:
 .PHONY: apply-production
 apply-production:
+
+.PHONY: destroy-all
+apply-all:
+	make destroy-development
+	make destroy-staging
+	make destroy-production
+.PHONY: destroy-development
+destroy-development:
+	cd workload/development/5-athena-iam && terraform destroy
+	cd workload/development/4-athena-queries && terraform destroy
+	cd workload/development/3-athena-database && terraform destroy
+	cd workload/development/2-athena-workgroup && terraform destroy
+	cd workload/development/1-athena-result-bucket && terraform destroy
+	cd workload/development/0-dummy-log-bucket && terraform destroy
