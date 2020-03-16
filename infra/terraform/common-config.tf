@@ -47,4 +47,5 @@ locals {
   }
   athena_result_bucket_name = "${local.service_name_with_env}-for-athena"
   athena_workgroup_name     = local.service_name_with_env
+  athena_database_name      = replace(local.service_name_with_env, "-", "_")
 }

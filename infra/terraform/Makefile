@@ -8,6 +8,7 @@ init-development:
 	cd workload/development/0-dummy-log-bucket && terraform init     # -upgrade
 	cd workload/development/1-athena-result-bucket && terraform init # -upgrade
 	cd workload/development/2-athena-workgroup && terraform init     # -upgrade
+	cd workload/development/3-athena-database && terraform init      # -upgrade
 .PHONY: init-staging
 init-staging:
 .PHONY: init-production
@@ -23,6 +24,7 @@ apply-development:
 	cd workload/development/0-dummy-log-bucket && terraform apply
 	cd workload/development/1-athena-result-bucket && terraform apply
 	cd workload/development/2-athena-workgroup && terraform apply
+	cd workload/development/3-athena-database && terraform apply
 .PHONY: apply-staging
 apply-staging:
 .PHONY: apply-production
